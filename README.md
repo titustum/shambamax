@@ -14,7 +14,7 @@ ShambaMax is a web platform designed to facilitate the sharing of farm machinery
 
 ## Technologies Used
 
-- **Laravel 10**: A powerful PHP framework for building web applications.
+- **Laravel 11**: A powerful PHP framework for building web applications.
 - **Tailwind CSS**: A utility-first CSS framework for building custom designs with ease.
 - **MySQL**: A popular open-source relational database management system for storing application data.
 - **JavaScript**: Used for client-side interactivity and functionality.
