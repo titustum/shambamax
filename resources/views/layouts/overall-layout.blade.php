@@ -10,30 +10,36 @@
 </head>
 
 <body class="flex flex-col min-h-screen bg-gray-100">
+
     <header class="bg-green-600 text-white">
-        <nav class="container mx-auto px-4 py-4 lg:flex lg:items-center lg:space-x-3">
-            <div class="flex items-center justify-between lg:items-center">
+        <nav class="container mx-auto px-4 py-4 lg:flex lg:items-center lg:justify-between">
+            <!-- Logo and Mobile Menu Button -->
+            <div class="flex items-center justify-between">
                 <a href="/" class="text-2xl font-bold">ShambaMax</a>
-                <button id="mobile-menu-button" class="md:hidden">
+                <button id="mobile-menu-button" class="lg:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
                 </button>
             </div>
-            <div id="mobile-menu" class="hidden md:flex lg:items-center lg:flex-grow md:items-center md:justify-between mt-4 md:mt-0">
-                <ul class="flex flex-col md:flex-row md:space-x-6 space-y-2 md:space-y-0">
-                    <li><a href="/" class="block hover:text-green-200">Home</a></li>
-                    <li><a href="/about" class="block hover:text-green-200">About</a></li>
-                    <li><a href="/equipment" class="block hover:text-green-200">Equipment</a></li>
-                    <li><a href="/contact" class="block hover:text-green-200">Contact</a></li>
+
+            <!-- Mobile Menu and Navigation Links -->
+            <div id="mobile-menu" class="hidden lg:flex lg:items-center lg:space-x-6">
+                <ul class="flex flex-col lg:flex-row lg:space-x-6 space-y-2 lg:space-y-0">
+                    <li><a href="/" class="block py-2 px-4 rounded-md hover:bg-green-700">Home</a></li>
+                    <li><a href="/about" class="block py-2 px-4 rounded-md hover:bg-green-700">About</a></li>
+                    <li><a href="/equipment" class="block py-2 px-4 rounded-md hover:bg-green-700">Equipment</a></li>
+                    <li><a href="/contact" class="block py-2 px-4 rounded-md hover:bg-green-700">Contact</a></li>
                 </ul>
-                <div class="flex flex-col md:flex-row md:space-x-4 space-y-2 md:space-y-0 mt-4 md:mt-0">
-                    <a href="/login" class="bg-green-700 hover:bg-green-800 px-4 py-2 rounded text-center">Login</a>
-                    <a href="/register" class="bg-white text-green-600 hover:bg-green-100 px-4 py-2 rounded text-center">Register</a>
+
+                <div class="flex flex-col lg:flex-row lg:space-x-4 space-y-2 lg:space-y-0 mt-4 lg:mt-0">
+                    <a href="/login" class="bg-green-700 hover:bg-green-800 px-4 py-2 rounded-md text-center transition duration-150 ease-in-out">Login</a>
+                    <a href="/register" class="bg-white text-green-600 hover:bg-gray-100 px-4 py-2 rounded-md text-center transition duration-150 ease-in-out">Register</a>
                 </div>
             </div>
         </nav>
     </header>
+
 
     <main class="flex-grow">
         {{ $slot }}
