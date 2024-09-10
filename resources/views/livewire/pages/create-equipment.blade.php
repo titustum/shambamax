@@ -15,17 +15,22 @@ class extends Component {
     use WithFileUploads;
 
     public $equipment_name;
-    public $category;
+    public $category_id;
     public $description;
     public $rate;
     public $rate_period = 'day';
     public $location;
     public $availability;
     public $image;
+    public $categories;
+
+    public function mount(){
+        $this->categories = Category::all();
+    }
 
     protected $rules = [
         'equipment_name' => 'required|string|max:255',
-        'category' => 'required|string|max:255',
+        'category_id' => 'required|string|max:255',
         'description' => 'required|string|max:500',
         'rate' => 'required|numeric|min:0',
         'rate_period' => 'required|string|in:hour,day,week,month',
@@ -45,9 +50,9 @@ class extends Component {
 
         Equipment::create([
             'name' => $this->equipment_name,
-            'category' => $this->category,
+            'category_id' => $this->category_id,
             'description' => $this->description,
-            'rental_rate' => $this->rate,
+            'rate' => $this->rate,
             'rental_period' => $this->rate_period,
             'location' => $this->location,
             'availability' => $this->availability,
@@ -60,8 +65,10 @@ class extends Component {
         // Clear input fields
         $this->reset();
 
+        $this->categories = Category::all();
+
         // Optionally redirect or update view
-        return redirect()->route('equipment.list');
+        // return redirect()->route('equipment.list');
     }
 }; ?>
 
@@ -90,17 +97,12 @@ class extends Component {
 
                 <!-- Equipment Category -->
                 <div>
-                    <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
-                    <select id="category" wire:model="category" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" required>
+                    <label for="category_id" class="block text-sm font-medium text-gray-700">Category</label>
+                    <select id="category_id" wire:model="category_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" required>
                         <option value="">Select a category</option>
-                        <option value="tractor">Tractor</option>
-                        <option value="harvester">Harvester</option>
-                        <option value="plough">Plough</option>
-                        <option value="seeder">Seeder</option>
-                        <option value="sprayer">Sprayer</option>
-                        <option value="irrigation">Irrigation System</option>
-                        <option value="tiller">Tiller</option>
-                        <option value="other">Other</option>
+                        @foreach ($categories as $category )
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
                     </select>
                     @error('category') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
@@ -146,6 +148,7 @@ class extends Component {
                 <div>
                     <label for="availability" class="block text-sm font-medium text-gray-700">Availability</label>
                     <select wire:model="availability" id="availability" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500" required>
+                        <option value="">Select availability</option>
                         <option value="always">Always available</option>
                         <option value="weekdays">Weekdays only</option>
                         <option value="weekends">Weekends only</option>
@@ -165,7 +168,7 @@ class extends Component {
                             <div class="flex text-sm text-gray-600">
                                 <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-green-600 hover:text-green-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-green-500">
                                     <span>Upload a file</span>
-                                    <input id="file-upload" type="file" wire:model="image" class="sr-only">
+                                    <input id="file-upload" type="file" accept="image/*" wire:model="image" class="sr-only">
                                 </label>
                                 <p class="pl-1">or drag and drop</p>
                             </div>

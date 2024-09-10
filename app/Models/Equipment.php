@@ -12,10 +12,10 @@ class Equipment extends Model
     protected $fillable = [
         'user_id',
         'name',
-        'category',
+        'category_id',
         'description',
         'rate',
-        'rate_type',
+        'rate_period',
         'location',
         'latitude',
         'longitude',
