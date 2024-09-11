@@ -1,11 +1,12 @@
 @props(['title'=>'ShambaMax - Empowering Kenyan Farmers'])
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'ShambaMax - Empowering Kenyan Farmers' }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     @vite(['resources/css/app.css','resources/js/app.js' ])
 </head>
 
@@ -27,8 +28,8 @@
             <div id="mobile-menu" class="hidden lg:flex lg:items-center lg:space-x-6">
                 <ul class="flex flex-col lg:flex-row lg:space-x-6 space-y-2 lg:space-y-0">
                     <li><a href="/" class="block py-2 px-4 rounded-md hover:bg-green-700">Home</a></li>
-                    <li><a href="/about" class="block py-2 px-4 rounded-md hover:bg-green-700">About</a></li>
-                    <li><a href="/equipment" class="block py-2 px-4 rounded-md hover:bg-green-700">Equipment</a></li>
+                    <li><a href="{{ route('about') }}" class="block py-2 px-4 rounded-md hover:bg-green-700">About</a></li>
+                    <li><a href="{{ route('all.equipment') }}" class="block py-2 px-4 rounded-md hover:bg-green-700">View Equipment</a></li>
                     <li><a href="/contact" class="block py-2 px-4 rounded-md hover:bg-green-700">Contact</a></li>
                 </ul>
 

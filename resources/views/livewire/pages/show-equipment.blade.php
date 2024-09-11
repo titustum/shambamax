@@ -27,7 +27,7 @@ class extends Component{
             <div class="bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <!-- Equipment Image -->
                 <div class="relative">
-                    <img src="{{ asset('storage/' . $equipment->image) }}" alt="{{ $equipment->name }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('storage/' . $equipment->image) }}" alt="{{ $equipment->name }}" class="w-full max-h-[70vh] p-3 object-contain">
                 </div>
 
                 <!-- Equipment Information -->

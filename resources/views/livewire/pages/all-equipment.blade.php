@@ -46,7 +46,7 @@ class extends Component{
                         {{ $equipment->location }}
                     </div>
                     <div class="mt-4">
-                        <a href="#"
+                        <a href="{{ route('equipment.show', $equipment->id) }}"
                             class="inline-flex items-center justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
                             View Details
                         </a>

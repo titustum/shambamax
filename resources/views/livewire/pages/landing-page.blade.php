@@ -47,7 +47,7 @@ class extends Component {
                             class="inline-flex items-center justify-center rounded-md border border-transparent bg-green-600 px-5 py-3 text-base font-medium text-white hover:bg-green-700 transition duration-150 ease-in-out">
                             List Your Machinery
                         </a>
-                        <a href="#"
+                        <a href="#how-it-works"
                             class="mt-3 inline-flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium text-green-700 shadow-md hover:bg-gray-100 transition duration-150 ease-in-out sm:mt-0">
                             How It Works
                         </a>
@@ -67,7 +67,7 @@ class extends Component {
 
 
     <!-- How It Works -->
-    <section class="bg-white py-16 sm:py-24">
+    <section id="how-it-works" class="bg-white py-16 sm:py-24">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">How ShambaMax Works</h2>
@@ -122,7 +122,7 @@ class extends Component {
             </div>
 
             <div class="mt-16 flex justify-center">
-                <a href="#"
+                <a href="{{ route('register') }}"
                     class="inline-flex items-center rounded-md border border-transparent bg-green-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-150 ease-in-out">
                     Get Started Now
                 </a>
