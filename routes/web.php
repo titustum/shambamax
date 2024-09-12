@@ -29,5 +29,6 @@ Volt::route('equipment/show/{id}', 'pages.show-equipment')->name('equipment.show
 Volt::route('equipment/book/{id}', 'pages.book-equipment')->name('equipment.book');
 Volt::route('equipment/create', 'pages.create-equipment')->name('equipment.create');
 Volt::route('about', 'pages.about')->name('about');
+Volt::route('contact', 'pages.contact-us')->name('contact');
 
 require __DIR__.'/auth.php';

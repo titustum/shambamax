@@ -1,8 +1,7 @@
 <?php
 
 use Livewire\Volt\Component;
-use Livewire\Attributes\Layout;
-use App\Models\Equipment;
+use Livewire\Attributes\Layout;  
 
 new
 #[Layout('layouts.overall-layout')]
@@ -10,16 +9,16 @@ class extends Component{
     //
 }; ?>
 
-<section class="bg-green-50 py-16 sm:py-24">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
+<section class="py-16 bg-green-50 sm:py-24">
+    <div class="max-w-4xl px-4 mx-auto sm:px-6 lg:px-8">
+        <div class="mb-12 text-center">
             <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">About ShambaMax</h2>
             <p class="mt-3 text-xl text-gray-500 sm:mt-4">Empowering Smallholder Farmers with Access to Essential Farm Machinery</p>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow">
+        <div class="p-6 bg-white rounded-lg shadow">
             <div class="flex items-center">
-                <i class="fas fa-bullhorn text-green-600 text-3xl"></i>
+                <i class="text-3xl text-green-600 fas fa-bullhorn"></i>
                 <div class="ml-4">
                     <h3 class="text-2xl font-bold text-gray-900">Our Mission</h3>
                     <p class="mt-4 text-gray-700">
@@ -29,9 +28,9 @@ class extends Component{
             </div>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow mt-8">
+        <div class="p-6 mt-8 bg-white rounded-lg shadow">
             <div class="flex items-center">
-                <i class="fas fa-eye text-green-600 text-3xl"></i>
+                <i class="text-3xl text-green-600 fas fa-eye"></i>
                 <div class="ml-4">
                     <h3 class="text-2xl font-bold text-gray-900">Our Vision</h3>
                     <p class="mt-4 text-gray-700">
@@ -41,15 +40,15 @@ class extends Component{
             </div>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow mt-8">
+        <div class="p-6 mt-8 bg-white rounded-lg shadow">
             <div class="flex items-center">
-                <i class="fas fa-cogs text-green-600 text-3xl"></i>
+                <i class="text-3xl text-green-600 fas fa-cogs"></i>
                 <div class="ml-4">
                     <h3 class="text-2xl font-bold text-gray-900">How It Works</h3>
                     <p class="mt-4 text-gray-700">
                         ShambaMax operates on a simple yet effective model:
                     </p>
-                    <ul class="list-disc list-inside mt-4 text-gray-700">
+                    <ul class="mt-4 text-gray-700 list-disc list-inside">
                         <li><strong>Register and List:</strong> Machinery owners can create a profile and list their equipment for sharing.</li>
                         <li><strong>Search and Connect:</strong> Farmers in need of machinery can search for available equipment, view details, and connect with owners.</li>
                         <li><strong>Book and Share:</strong> Once a connection is made, farmers can book the machinery and coordinate usage directly with the owner.</li>
@@ -59,9 +58,9 @@ class extends Component{
             </div>
         </div>
 
-        <div class="bg-white p-6 rounded-lg shadow mt-8">
+        <div class="p-6 mt-8 bg-white rounded-lg shadow">
             <div class="flex items-center">
-                <i class="fas fa-users text-green-600 text-3xl"></i>
+                <i class="text-3xl text-green-600 fas fa-users"></i>
                 <div class="ml-4">
                     <h3 class="text-2xl font-bold text-gray-900">Our Team</h3>
                     <p class="mt-4 text-gray-700">
