@@ -47,9 +47,12 @@ class extends Component{
             'requirements' => $this->requirements,
         ]);
 
+        $this->reset();
+
         // Redirect or return response
         session()->flash('success', 'Your booking request has been submitted.');
-        // return redirect(route('all.equipment'));
+
+        return redirect(route('dashboard'));
     }
 
 
@@ -64,13 +67,36 @@ class extends Component{
             <p class="mt-3 text-xl text-gray-500 sm:mt-4">Reserve the machinery you need for your farm</p>
         </div>
 
+        @if (session()->has('success'))
+            <div class="bg-green-100 text-green-800 p-4 rounded-lg mb-6">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <form wire:submit.prevent='bookEquipment' class="space-y-8">
-            <div class="space-y-6 bg-white p-6 rounded-lg shadow">
-                <!-- Equipment Details -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Equipment</label>
-                    <p class="mt-1 text-gray-900">{{ $equipment->name }}</p>
+            <div class=" space-y-6 bg-white p-6 rounded-lg shadow">
+
+                <div class="grid md:grid-cols-2 border-b-4 border-green-600 py-3">
+
+                    <div class="space-y-4 font-semibold">
+                        <!-- Equipment Details -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Equipment</label>
+                            <p class="mt-1 text-orange-600">{{ $equipment->name }}</p>
+                        </div>
+                        <!-- Equipment Price -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Equipment Price</label>
+                            <p class="mt-1 text-orange-600">KES {{ number_format($equipment->rate) }} / {{ $equipment->rate_type }}</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <img class="h-28 w-full object-contain" src="{{ asset('storage/'. $equipment->image) }}" alt="Tractor">
+                    </div>
+
                 </div>
+
 
                 <!-- Booking Dates -->
                 <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-2">

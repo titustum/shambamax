@@ -36,7 +36,7 @@ class extends Component {
         'rate_period' => 'required|string|in:hour,day,week,month',
         'location' => 'required|string|max:255',
         'availability' => 'required|string|in:always,weekdays,weekends,custom',
-        'image' => 'nullable|image|max:10240', // max file size 10MB
+        'image' => 'required|image|max:10240', // max file size 10MB
     ];
 
     public function postEquipment()

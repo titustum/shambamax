@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -13,9 +15,13 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-Route::view('equipment/list', 'list-equipment')->name('list.equipment');
-Route::view('equipment/book', 'book-equipment')->name('book.equipment');
-Route::view('equipment/show', 'show-equipment')->name('show.equipment');
+Route::get('logout', function () {
+    Auth::logout();
+    session()->invalidate();
+    session()->regenerateToken();
+    // Redirect to a specific page after logout
+    return redirect('/login')->with('status', 'Logged out successfully!');
+})->name('logout');
 
 Volt::route('/', 'pages.landing-page')->name('home');
 Volt::route('equipments', 'pages.all-equipment')->name('all.equipment');

@@ -43,9 +43,9 @@ class extends Component {
                         </form>
                     </div>
                     <div class="mt-8 flex flex-col sm:flex-row sm:space-x-4">
-                        <a href="#"
+                        <a href="{{ route('equipment.create') }}"
                             class="inline-flex items-center justify-center rounded-md border border-transparent bg-green-600 px-5 py-3 text-base font-medium text-white hover:bg-green-700 transition duration-150 ease-in-out">
-                            List Your Machinery
+                            Post Your Machinery
                         </a>
                         <a href="#how-it-works"
                             class="mt-3 inline-flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium text-green-700 shadow-md hover:bg-gray-100 transition duration-150 ease-in-out sm:mt-0">
@@ -55,7 +55,7 @@ class extends Component {
                 </div>
                 <!-- Image Content -->
                 <div class="flex items-center justify-center">
-                    <img class="h-56 w-full object-cover rounded-lg shadow-lg sm:h-72 md:h-96 lg:h-full lg:w-full"
+                    <img class="h-auto w-full object-cover rounded-lg shadow-lg sm:h-72 md:h-96 lg:h-full lg:w-full"
                         src="{{ asset('images/Modern-Farming-Equipment.jpg') }}"
                         alt="Modern farming equipment in a field">
                 </div>
@@ -193,7 +193,7 @@ class extends Component {
                     <img class="h-48 w-full object-contain" src="{{ asset('storage/'. $equipment->image) }}" alt="Tractor">
                     <div class="p-4">
                         <h3 class="text-lg font-semibold text-gray-900">{{ $equipment->name }}</h3>
-                        <p class="mt-1 text-sm text-gray-500">KES {{ number_format($equipment->rate) }} / {{ $equipment->rate_period ?? $equipment->rate_type }}</p>
+                        <p class="mt-1 text-sm text-gray-500">KES {{ number_format($equipment->rate) }} / {{ $equipment->rate_type }}</p>
                         <div class="mt-2 flex items-center text-sm text-gray-500">
                             <svg class="mr-1.5 h-5 w-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"

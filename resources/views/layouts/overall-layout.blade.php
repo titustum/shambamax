@@ -12,10 +12,10 @@
 
 <body class="flex flex-col min-h-screen bg-gray-100">
 
-    <header class="bg-green-600 text-white">
-        <nav class="container mx-auto px-4 py-4 lg:flex lg:items-center lg:justify-between">
+    <header class="bg-green-600 text-white fixed top-0 left-0 w-full z-20">
+        <nav class="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between">
             <!-- Logo and Mobile Menu Button -->
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between w-full lg:w-auto">
                 <a href="/" class="text-2xl font-bold">ShambaMax</a>
                 <button id="mobile-menu-button" class="lg:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -24,25 +24,63 @@
                 </button>
             </div>
 
-            <!-- Mobile Menu and Navigation Links -->
-            <div id="mobile-menu" class="hidden lg:flex lg:items-center lg:space-x-6">
-                <ul class="flex flex-col lg:flex-row lg:space-x-6 space-y-2 lg:space-y-0">
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="fixed top-0 left-0 h-full bg-green-600 shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out w-64 z-30">
+                <ul class="flex flex-col space-y-2 px-4 py-4 mt-16">
                     <li><a href="/" class="block py-2 px-4 rounded-md hover:bg-green-700">Home</a></li>
                     <li><a href="{{ route('about') }}" class="block py-2 px-4 rounded-md hover:bg-green-700">About</a></li>
-                    <li><a href="{{ route('all.equipment') }}" class="block py-2 px-4 rounded-md hover:bg-green-700">View Equipment</a></li>
+                    <li><a href="{{ route('all.equipment') }}" class="block py-2 px-4 rounded-md hover:bg-green-700">Categories</a></li>
+                    <li><a href="{{ route('all.equipment') }}" class="block py-2 px-4 rounded-md hover:bg-green-700">All Equipment</a></li>
                     <li><a href="/contact" class="block py-2 px-4 rounded-md hover:bg-green-700">Contact</a></li>
+                    @auth
+                    <li><a href="{{ route('dashboard') }}" class="block py-2 px-4 rounded-md hover:bg-green-700">Dashboard</a></li>
+                    @endauth
                 </ul>
 
-                <div class="flex flex-col lg:flex-row lg:space-x-4 space-y-2 lg:space-y-0 mt-4 lg:mt-0">
+                <div class="flex flex-col space-y-2 px-4 py-2">
+                    @auth
+                    <a href="{{ route('profile') }}" class="bg-green-700 hover:bg-green-800 px-4 py-2 rounded-md text-center transition duration-150 ease-in-out">
+                        <i class="fas fa-user-alt"></i> {{ Auth::user()->name }}
+                    </a>
+                    @else
                     <a href="/login" class="bg-green-700 hover:bg-green-800 px-4 py-2 rounded-md text-center transition duration-150 ease-in-out">Login</a>
                     <a href="/register" class="bg-white text-green-600 hover:bg-gray-100 px-4 py-2 rounded-md text-center transition duration-150 ease-in-out">Register</a>
+                    @endauth
+                </div>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex lg:items-center lg:space-x-6">
+                <ul class="flex flex-row space-x-6">
+                    <li><a href="/" class="block py-2 px-4 rounded-md hover:bg-green-700">Home</a></li>
+                    <li><a href="{{ route('about') }}" class="block py-2 px-4 rounded-md hover:bg-green-700">About</a></li>
+                    <li><a href="{{ route('all.equipment') }}" class="block py-2 px-4 rounded-md hover:bg-green-700">Categories</a></li>
+                    <li><a href="{{ route('all.equipment') }}" class="block py-2 px-4 rounded-md hover:bg-green-700">All Equipment</a></li>
+                    <li><a href="/contact" class="block py-2 px-4 rounded-md hover:bg-green-700">Contact</a></li>
+                    @auth
+                    <li><a href="{{ route('dashboard') }}" class="block py-2 px-4 rounded-md hover:bg-green-700">Dashboard</a></li>
+                    @endauth
+                </ul>
+
+                <div class="flex space-x-4">
+                    @auth
+                    <a href="{{ route('profile') }}" class="bg-green-700 hover:bg-green-800 px-4 py-2 rounded-md text-center transition duration-150 ease-in-out">
+                        <i class="fas fa-user-alt"></i> {{ Auth::user()->name }}
+                    </a>
+                    @else
+                    <a href="/login" class="bg-green-700 hover:bg-green-800 px-4 py-2 rounded-md text-center transition duration-150 ease-in-out">Login</a>
+                    <a href="/register" class="bg-white text-green-600 hover:bg-gray-100 px-4 py-2 rounded-md text-center transition duration-150 ease-in-out">Register</a>
+                    @endauth
                 </div>
             </div>
         </nav>
     </header>
 
 
-    <main class="flex-grow">
+
+
+
+    <main class="flex-grow pt-10">
         {{ $slot }}
     </main>
 
@@ -83,10 +121,14 @@
     </footer>
 
 
+
     <script>
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('-translate-x-full');
+            menu.classList.toggle('translate-x-0');
         });
     </script>
+
 </body>
 </html>
